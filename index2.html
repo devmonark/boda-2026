@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roney & Dulce · Invitación de lujo</title>
+  <!-- Fuentes refinadas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background-color: #0c0c0c;
+      color: #f0ede9;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .script { font-family: 'Parisienne', cursive; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* Hero */
+    .hero {
+      height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: url('novios2.jpeg') center center / cover no-repeat;
+      transform: scale(1.05); animation: slowZoom 20s infinite alternate ease-in-out; z-index: -2;
+    }
+    @keyframes slowZoom { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+    .hero-overlay {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(135deg, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.4) 100%); z-index: -1;
+    }
+    .hero-content { z-index: 2; max-width: 900px; padding: 0 20px; }
+    .hero-sub {
+      font-size: 1.2rem; letter-spacing: 6px; text-transform: uppercase; color: #d4b68a; margin-bottom: 20px;
+      opacity: 0; animation: fadeUp 1.2s forwards 0.3s;
+    }
+    .hero-title {
+      font-family: 'Parisienne', cursive; font-size: clamp(4rem, 12vw, 7rem); color: #f0ede9;
+      text-shadow: 0 0 20px rgba(212,182,138,0.3); margin-bottom: 20px;
+      opacity: 0; animation: fadeScale 1.2s forwards 0.6s;
+    }
+    .hero-date {
+      font-size: 1.5rem; letter-spacing: 4px; border-top: 1px solid #d4b68a; border-bottom: 1px solid #d4b68a;
+      display: inline-block; padding: 15px 40px; color: #d4b68a;
+      opacity: 0; animation: fadeUp 1.2s forwards 0.9s;
+    }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeScale { to { opacity: 1; transform: scale(1); } }
+    .scroll-down {
+      position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+      color: #d4b68a; font-size: 1.8rem; animation: bounce 2.2s infinite;
+    }
+    @keyframes bounce { 0%,20%,50%,80%,100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-20px); } 60% { transform: translateX(-50%) translateY(-10px); } }
+
+    /* Secciones generales */
+    .section { padding: 100px 20px; }
+    .section-title {
+      font-size: 3.5rem; text-align: center; color: #d4b68a; margin-bottom: 20px; font-family: 'Parisienne', cursive;
+    }
+    .section-sub { text-align: center; max-width: 700px; margin: 0 auto 60px; color: #aaa; font-size: 1.2rem; }
+
+    /* Saludo */
+    .greeting {
+      text-align: center; font-size: 2rem; max-width: 800px; margin: 0 auto; color: #f0ede9;
+      border-left: 2px solid #d4b68a; border-right: 2px solid #d4b68a; padding: 30px 20px;
+    }
+    .greeting p { margin-bottom: 20px; }
+    .greeting .family { font-family: 'Parisienne', cursive; font-size: 2.5rem; color: #d4b68a; }
+
+    /* Fecha destacada */
+    .big-date {
+      font-size: 2.8rem; text-align: center; color: #d4b68a; margin: 40px 0;
+      font-family: 'Parisienne', cursive; letter-spacing: 2px;
+    }
+
+    /* Textos bíblicos en dos columnas */
+    .bible-verses {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 900px; margin: 60px auto;
+    }
+    .verse {
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(212,182,138,0.2); border-radius: 30px;
+      padding: 40px 30px; text-align: center; transition: 0.4s;
+    }
+    .verse:hover { border-color: #d4b68a; transform: translateY(-5px); }
+    .verse i { font-size: 2.5rem; color: #d4b68a; margin-bottom: 20px; }
+    .verse h3 { font-size: 2rem; color: #d4b68a; margin-bottom: 15px; font-family: 'Parisienne', cursive; }
+    .verse p { font-size: 1.3rem; font-style: italic; color: #ccc; }
+
+    /* PROGRAMA HORIZONTAL (con scroll) */
+    .timeline-section { padding: 60px 20px; }
+    .timeline-container {
+      max-width: 1000px; margin: 0 auto; overflow-x: auto; padding: 20px 0 30px;
+      scrollbar-width: thin; scrollbar-color: #d4b68a #222;
+    }
+    .timeline-container::-webkit-scrollbar { height: 8px; }
+    .timeline-container::-webkit-scrollbar-track { background: #222; border-radius: 10px; }
+    .timeline-container::-webkit-scrollbar-thumb { background: #d4b68a; border-radius: 10px; }
+    .timeline-horizontal {
+      display: flex; gap: 30px; padding: 10px 10px 20px; min-width: min-content;
+    }
+    .timeline-item {
+      flex: 0 0 220px; text-align: center; background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(212,182,138,0.2); border-radius: 30px; padding: 30px 20px;
+      transition: 0.3s;
+    }
+    .timeline-item:hover { border-color: #d4b68a; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(212,182,138,0.1); }
+    .timeline-time { font-size: 2rem; color: #d4b68a; font-weight: 600; }
+    .timeline-icon { font-size: 2.2rem; margin: 15px 0; color: #d4b68a; }
+    .timeline-title { font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; color: #f0ede9; }
+    .timeline-desc { font-size: 1.1rem; color: #aaa; margin-top: 8px; }
+
+    /* Tarjeta de lugar */
+    .place-card {
+      max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(212,182,138,0.2); border-radius: 60px; padding: 50px 40px;
+      text-align: center; backdrop-filter: blur(5px); transition: 0.4s;
+    }
+    .place-card:hover { border-color: #d4b68a; box-shadow: 0 20px 40px rgba(212,182,138,0.1); }
+    .place-card i { font-size: 3rem; color: #d4b68a; margin-bottom: 20px; }
+    .place-card h3 { font-size: 2.8rem; font-weight: 400; margin-bottom: 15px; color: #f0ede9; }
+    .place-card p { font-size: 1.3rem; color: #ccc; }
+
+    /* Tarjeta BBVA */
+    .bbva-card {
+      max-width: 500px; margin: 30px auto; background: linear-gradient(145deg, #002f5f, #001b3a);
+      border-radius: 20px; padding: 35px; color: white; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      transition: 0.4s; border: 1px solid #d4b68a;
+    }
+    .bbva-card:hover { transform: scale(1.02); box-shadow: 0 30px 60px rgba(212,182,138,0.3); }
+    .card-logo { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+    .card-chip { width: 50px; height: 35px; background: linear-gradient(135deg, #d4b68a, #b49450); border-radius: 8px; }
+    .card-type { font-weight: 700; font-size: 1.4rem; color: #d4b68a; }
+    .card-number-container {
+      display: flex; align-items: center; gap: 15px; margin-bottom: 25px; background: rgba(255,255,255,0.1);
+      padding: 12px 18px; border-radius: 50px; cursor: pointer; transition: 0.3s;
+    }
+    .card-number-container:hover { background: rgba(212,182,138,0.2); }
+    .card-number { font-family: 'Courier New', monospace; font-size: 1.5rem; letter-spacing: 3px; word-spacing: 5px; flex: 1; }
+    .copy-icon { color: #d4b68a; font-size: 1.3rem; }
+    .card-details { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; text-transform: uppercase; }
+    .card-holder span, .card-exp span { display: block; font-size: 0.7rem; color: rgba(255,255,255,0.6); }
+    .bbva-badge { position: absolute; bottom: 15px; right: 20px; font-weight: 800; font-size: 1.3rem; opacity: 0.6; }
+    .copy-alert { color: #d4b68a; margin-top: 10px; font-size: 0.9rem; min-height: 24px; text-align: center; }
+
+    /* Galería */
+    .gallery-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1000px; margin: 50px auto;
+    }
+    .gallery-item {
+      background: #1a1a1a; padding: 20px; border-radius: 20px; box-shadow: 0 20px 30px rgba(0,0,0,0.5); transition: 0.5s;
+    }
+    .gallery-item:hover { transform: translateY(-10px); box-shadow: 0 30px 50px rgba(212,182,138,0.2); }
+    .gallery-item img { width: 100%; height: auto; display: block; border-radius: 12px; object-fit: contain; background: #0c0c0c; }
+
+    /* RSVP (solo nombre) */
+    .rsvp-card {
+      max-width: 700px; margin: 0 auto; background: rgba(20,20,20,0.8); backdrop-filter: blur(8px);
+      border: 1px solid #d4b68a; border-radius: 60px; padding: 60px 40px; text-align: center;
+    }
+    .rsvp-card h2 { font-size: 3.5rem; color: #d4b68a; margin-bottom: 20px; font-family: 'Parisienne', cursive; }
+    .field { margin-bottom: 40px; text-align: left; }
+    .field label { display: block; margin-bottom: 8px; color: #d4b68a; font-size: 1.2rem; letter-spacing: 1px; }
+    .field input {
+      width: 100%; padding: 18px 24px; background: rgba(255,255,255,0.05); border: 1px solid #d4b68a;
+      border-radius: 60px; color: #f0ede9; font-size: 1.1rem; font-family: 'Cormorant Garamond', serif;
+    }
+    .btn-gold {
+      background: #d4b68a; color: #0c0c0c; border: none; padding: 18px 50px; font-size: 1.3rem;
+      border-radius: 60px; cursor: pointer; transition: 0.3s; font-weight: 700; letter-spacing: 2px; width: 100%;
+    }
+    .btn-gold:hover { background: #e6d3b5; transform: scale(1.02); box-shadow: 0 10px 30px rgba(212,182,138,0.3); }
+
+    /* Footer */
+    .footer { padding: 50px; text-align: center; background: #0a0a0a; border-top: 1px solid #222; }
+    .footer p { font-family: 'Parisienne', cursive; font-size: 2rem; color: #d4b68a; }
+
+    /* Botón flotante */
+    .go-top {
+      position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+      background: rgba(212,182,138,0.2); backdrop-filter: blur(5px); border: 1px solid #d4b68a;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4b68a;
+      font-size: 1.5rem; cursor: pointer; opacity: 0; transition: 0.3s; pointer-events: none; z-index: 100;
+    }
+    .go-top.visible { opacity: 0.7; pointer-events: all; }
+    .go-top:hover { opacity: 1; transform: scale(1.1); }
+
+    @media (max-width: 700px) {
+      .bible-verses { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-sub">La boda de</p>
+      <h1 class="hero-title">Roney & Dulce</h1>
+      <div class="hero-date">19 · 04 · 2026</div>
+    </div>
+    <div class="scroll-down"><i class="fas fa-chevron-down"></i></div>
+  </section>
+
+  <!-- SALUDO INICIAL (Invitación a la persona/familia) -->
+  <section class="section" data-aos="fade-up">
+    <div class="container">
+      <div class="greeting">
+        <p class="family">Querida familia y amigos</p>
+        <p>Con inmensa alegría, deseamos que nos acompañen en el día que uniremos nuestras vidas. Su presencia es el mejor regalo.</p>
+        <p style="font-size:1.5rem; color:#d4b68a;">Roney & Dulce</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FECHA DESTACADA -->
+  <section data-aos="fade-up">
+    <div class="big-date">19 de Abril de 2026</div>
+  </section>
+
+  <!-- TEXTOS BÍBLICOS (uno para él, uno para ella) -->
+  <section class="section" data-aos="fade-up">
+    <div class="container">
+      <h2 class="section-title">Nuestros versos</h2>
+      <div class="bible-verses">
+        <div class="verse">
+          <i class="fas fa-heart"></i>
+          <h3>Para el novio</h3>
+          <p>"El que halla esposa halla el bien y alcanza la benevolencia del Señor."</p>
+          <p style="margin-top:15px;">— Proverbios 18:22</p>
+        </div>
+        <div class="verse">
+          <i class="fas fa-heart"></i>
+          <h3>Para la novia</h3>
+          <p>"Muchas mujeres han hecho el bien, mas tú las superas a todas."</p>
+          <p style="margin-top:15px;">— Proverbios 31:29</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMA / ITINERARIO HORIZONTAL -->
+  <section class="timeline-section" data-aos="fade-up">
+    <div class="container">
+      <h2 class="section-title">Programa del día</h2>
+      <div class="timeline-container">
+        <div class="timeline-horizontal">
+          <div class="timeline-item">
+            <div class="timeline-time">17:30</div>
+            <div class="timeline-icon"><i class="fas fa-glass-cheers"></i></div>
+            <div class="timeline-title">Recepción</div>
+            <div class="timeline-desc">Llegada de invitados</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">18:30</div>
+            <div class="timeline-icon"><i class="fas fa-church"></i></div>
+            <div class="timeline-title">Ceremonia</div>
+            <div class="timeline-desc">Intercambio de votos</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">20:00</div>
+            <div class="timeline-icon"><i class="fas fa-utensils"></i></div>
+            <div class="timeline-title">Cena</div>
+            <div class="timeline-desc">Banquete de gala</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">22:00</div>
+            <div class="timeline-icon"><i class="fas fa-music"></i></div>
+            <div class="timeline-title">Baile</div>
+            <div class="timeline-desc">Pista abierta</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">00:00</div>
+            <div class="timeline-icon"><i class="fas fa-cake"></i></div>
+            <div class="timeline-title">Brindis</div>
+            <div class="timeline-desc">Pastel y despedida</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UBICACIÓN -->
+  <section class="section" data-aos="fade-up">
+    <div class="container">
+      <h2 class="section-title">Lugar</h2>
+      <div class="place-card">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3>Hacienda San José</h3>
+        <p>Carretera Central Km 12, Valle de las Flores</p>
+        <p style="margin-top:20px; color:#d4b68a;">Código de vestimenta: formal</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MESA DE REGALOS (BBVA) -->
+  <section class="section" data-aos="fade-up">
+    <div class="container">
+      <h2 class="section-title">Mesa de regalos</h2>
+      <p style="text-align:center; color:#aaa; margin-bottom:20px;">Su presencia es el mejor regalo, pero si desean contribuir:</p>
+      <div class="bbva-card">
+        <div class="card-logo">
+          <div class="card-chip"></div>
+          <div class="card-type">BBVA</div>
+        </div>
+        <div class="card-number-container" id="cardNumberContainer">
+          <span class="card-number" id="accountNumber">0123 4567 8901 2345</span>
+          <span class="copy-icon" id="copyIcon"><i class="far fa-copy"></i></span>
+        </div>
+        <div class="card-details">
+          <div class="card-holder">
+            <span>Titular</span>
+            <strong>RONEY & DULCE</strong>
+          </div>
+          <div class="card-exp">
+            <span>Expira</span>
+            <strong>04/26</strong>
+          </div>
+        </div>
+        <div class="bbva-badge">PLATINUM</div>
+      </div>
+      <div id="copyMessage" class="copy-alert"></div>
+    </div>
+  </section>
+
+  <!-- GALERÍA DE FOTOS -->
+  <section class="section" data-aos="fade-up">
+    <div class="container">
+      <h2 class="section-title">Nuestros momentos</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="novios.jpeg" alt="Roney y Dulce"></div>
+        <div class="gallery-item"><img src="novios1.jpeg" alt="Roney y Dulce"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONFIRMACIÓN DE ASISTENCIA (solo nombre) -->
+  <section class="section" data-aos="fade-up">
+    <div class="container">
+      <div class="rsvp-card">
+        <h2>Confirma tu asistencia</h2>
+        <p style="color:#aaa; margin-bottom:40px;">Por favor, ingresa tu nombre o el de tu familia</p>
+        <div class="field">
+          <label>Nombre completo (persona/familia)</label>
+          <input type="text" id="guestName" placeholder="Ej. Familia Pérez">
+        </div>
+        <button class="btn-gold" id="btnConfirmar"><i class="fab fa-whatsapp" style="margin-right:10px;"></i> Confirmar por WhatsApp</button>
+        <p style="margin-top:30px; font-size:0.9rem; color:#888;">*Serás redirigido a WhatsApp para enviar tu confirmación</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>Roney & Dulce · 19 Abril 2026</p>
+  </footer>
+
+  <!-- BOTÓN FLOTANTE -->
+  <div class="go-top" id="goTop"><i class="fas fa-chevron-up"></i></div>
+
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    AOS.init({ duration: 1200, once: true, offset: 100 });
+
+    // Validación y envío del formulario (solo nombre)
+    document.getElementById('btnConfirmar').addEventListener('click', () => {
+      const nombre = document.getElementById('guestName').value.trim();
+      if (!nombre) {
+        alert('Por favor ingresa tu nombre o el de tu familia');
+        return;
+      }
+      const telefono = '521234567890'; // <--- REEMPLAZAR CON NÚMERO REAL
+      const mensaje = `¡Hola! Confirmo asistencia a la boda de Roney y Dulce.%0A%0ANombre/Familia: ${nombre}%0A%0A¡Los esperamos!`;
+      window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');
+    });
+
+    // Copiar número de cuenta
+    const cardContainer = document.getElementById('cardNumberContainer');
+    const accountNumberSpan = document.getElementById('accountNumber');
+    const copyMessage = document.getElementById('copyMessage');
+    cardContainer.addEventListener('click', () => {
+      const numero = accountNumberSpan.innerText; // "0123 4567 8901 2345"
+      navigator.clipboard.writeText(numero).then(() => {
+        copyMessage.innerText = '✓ Número copiado al portapapeles';
+        setTimeout(() => { copyMessage.innerText = ''; }, 3000);
+      }).catch(() => {
+        copyMessage.innerText = 'Error al copiar, inténtalo manualmente';
+      });
+    });
+
+    // Botón volver arriba
+    const goTop = document.getElementById('goTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) goTop.classList.add('visible');
+      else goTop.classList.remove('visible');
+    });
+    goTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Parallax para el hero
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to('.hero-bg', {
+      y: '20%',
+      ease: 'none',
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+    });
+  </script>
+</body>
+</html>
