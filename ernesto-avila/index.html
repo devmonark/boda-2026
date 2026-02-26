@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roney & Dulce · Boda de lujo</title>
+  <!-- Metaetiquetas para compartir en redes (Open Graph y Twitter) -->
+  <meta property="og:title" content="Roney & Dulce · Boda 2026">
+  <meta property="og:description" content="Te esperamos para celebrar juntos este momento tan especial. Confirma tu asistencia.">
+  <meta property="og:image" content="N1.jpeg">
+  <meta property="og:url" content="https://boda-rd.netlify.app/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Roney & Dulce · Boda 2026">
+  <meta name="twitter:description" content="Te esperamos para celebrar juntos este momento tan especial. Confirma tu asistencia.">
+  <meta name="twitter:image" content="N1.jpeg">
+  <link rel="icon" href="boda.png" type="image/png">   
+  <!-- Evitar que iOS convierta números en azul -->
+  <meta name="format-detection" content="telephone=no">
+  <!-- Fuentes refinadas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background-color: #0c0c0c;
+      color: #f0ede9;
+      line-height: 1.5;
+      overflow-x: hidden;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    .script { font-family: 'Parisienne', cursive; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* Hero */
+    .hero {
+      height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: url('novios2.jpeg') center center / cover no-repeat;
+      transform: scale(1.05); animation: slowZoom 20s infinite alternate ease-in-out; z-index: -2;
+    }
+    @keyframes slowZoom { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+    .hero-overlay {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(135deg, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.4) 100%); z-index: -1;
+    }
+    .hero-content { z-index: 2; max-width: 900px; padding: 0 20px; }
+    .hero-sub {
+      font-size: 1.3rem; letter-spacing: 6px; text-transform: uppercase; color: #d4b68a; margin-bottom: 20px;
+      opacity: 0; animation: fadeUp 1.2s forwards 0.3s;
+    }
+    .hero-title {
+      font-family: 'Parisienne', cursive; font-size: clamp(4rem, 12vw, 7rem); color: #f0ede9;
+      text-shadow: 0 0 20px rgba(212,182,138,0.3); margin-bottom: 20px;
+      opacity: 0; animation: fadeScale 1.2s forwards 0.6s;
+    }
+    .hero-date {
+      font-size: 1.6rem; letter-spacing: 4px; border-top: 1px solid #d4b68a; border-bottom: 1px solid #d4b68a;
+      display: inline-block; padding: 15px 40px; color: #d4b68a;
+      opacity: 0; animation: fadeUp 1.2s forwards 0.9s;
+    }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeScale { to { opacity: 1; transform: scale(1); } }
+    
+    /* Botón de entrada */
+    .hero-btn {
+      margin-top: 50px;
+      opacity: 0;
+      animation: fadeUp 1.2s forwards 1.2s;
+    }
+    .btn-invitation {
+      display: inline-block;
+      background: transparent;
+      border: 2px solid #d4b68a;
+      color: #d4b68a;
+      padding: 16px 48px;
+      font-size: 1.4rem;
+      border-radius: 60px;
+      text-decoration: none;
+      letter-spacing: 2px;
+      transition: all 0.4s ease;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .btn-invitation:hover {
+      background: #d4b68a;
+      color: #0c0c0c;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(212,182,138,0.4);
+    }
+
+    /* Secciones generales */
+    .section { padding: 100px 20px; }
+    .section-title {
+      font-size: 3.5rem; text-align: center; color: #d4b68a; margin-bottom: 20px; font-family: 'Parisienne', cursive;
+    }
+
+    /* Saludo */
+    .greeting {
+      text-align: center; font-size: 2rem; max-width: 800px; margin: 0 auto; color: #f0ede9;
+      border-left: 2px solid #d4b68a; border-right: 2px solid #d4b68a; padding: 30px 20px;
+    }
+    .greeting p { margin-bottom: 20px; }
+    .greeting .family { font-family: 'Parisienne', cursive; font-size: 2.5rem; color: #d4b68a; }
+
+    /* Fecha destacada */
+    .big-date {
+      font-size: 2.8rem; text-align: center; color: #d4b68a; margin: 40px 0;
+      font-family: 'Parisienne', cursive; letter-spacing: 2px;
+    }
+
+    /* Textos bíblicos */
+    .bible-verses {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 900px; margin: 60px auto;
+    }
+    .verse {
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(212,182,138,0.2); border-radius: 30px;
+      padding: 40px 30px; text-align: center; transition: 0.4s;
+    }
+    .verse:hover { border-color: #d4b68a; transform: translateY(-5px); }
+    .verse i { font-size: 2.5rem; color: #d4b68a; margin-bottom: 20px; }
+    .verse h3 { font-size: 2rem; color: #d4b68a; margin-bottom: 15px; font-family: 'Parisienne', cursive; }
+    .verse p { font-size: 1.3rem; font-style: italic; color: #ccc; }
+
+    /* COUNTDOWN ELEGANTE */
+    .countdown-wrapper {
+      background: rgba(20,20,20,0.8);
+      backdrop-filter: blur(8px);
+      border: 1px solid #d4b68a;
+      border-radius: 60px;
+      padding: 40px 30px;
+      max-width: 700px;
+      margin: 0 auto 60px;
+      text-align: center;
+    }
+    .countdown-title {
+      font-size: 2.5rem;
+      color: #d4b68a;
+      margin-bottom: 30px;
+      font-family: 'Parisienne', cursive;
+    }
+    .countdown-grid {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+    .countdown-item {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid #d4b68a;
+      border-radius: 30px;
+      padding: 20px 15px;
+      min-width: 100px;
+    }
+    .countdown-item .number {
+      display: block;
+      font-size: 3rem;
+      font-weight: 600;
+      color: #d4b68a;
+      line-height: 1;
+    }
+    .countdown-item .label {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #aaa;
+    }
+
+    /* PROGRAMA HORIZONTAL */
+    .timeline-section { padding: 60px 20px; }
+    .timeline-container {
+      max-width: 1200px; margin: 0 auto; overflow-x: auto; padding: 20px 0 30px;
+      scrollbar-width: thin; scrollbar-color: #d4b68a #222;
+    }
+    .timeline-container::-webkit-scrollbar { height: 8px; }
+    .timeline-container::-webkit-scrollbar-track { background: #222; border-radius: 10px; }
+    .timeline-container::-webkit-scrollbar-thumb { background: #d4b68a; border-radius: 10px; }
+    .timeline-horizontal {
+      display: flex; gap: 25px; padding: 10px 5px 20px; min-width: min-content;
+    }
+    .timeline-item {
+      flex: 0 0 260px; text-align: center; background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(212,182,138,0.2); border-radius: 30px; padding: 35px 20px;
+      transition: 0.3s;
+    }
+    .timeline-item:hover { border-color: #d4b68a; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(212,182,138,0.1); }
+    .timeline-time {
+      font-size: 2.5rem; color: #d4b68a; font-weight: 600; line-height: 1.2; margin-bottom: 10px;
+    }
+    .timeline-icon { font-size: 2.8rem; margin: 15px 0; color: #d4b68a; }
+    .timeline-title {
+      font-size: 1.9rem; text-transform: uppercase; letter-spacing: 1.5px; color: #f0ede9; font-weight: 500;
+    }
+    .timeline-desc { font-size: 1.4rem; color: #aaa; margin-top: 10px; line-height: 1.4; }
+
+    /* Lugar con botón maps */
+    .place-card {
+      max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(212,182,138,0.2); border-radius: 60px; padding: 50px 40px;
+      text-align: center; backdrop-filter: blur(5px); transition: 0.4s;
+    }
+    .place-card:hover { border-color: #d4b68a; box-shadow: 0 20px 40px rgba(212,182,138,0.1); }
+    .place-card i { font-size: 3rem; color: #d4b68a; margin-bottom: 20px; }
+    .place-card h3 { font-size: 2.8rem; font-weight: 400; margin-bottom: 15px; color: #f0ede9; }
+    .place-card p { font-size: 1.4rem; color: #ccc; margin-bottom: 10px; }
+    .btn-maps {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: transparent; border: 2px solid #d4b68a; color: #d4b68a;
+      padding: 12px 30px; border-radius: 60px; font-size: 1.3rem; text-decoration: none;
+      transition: 0.3s; font-weight: 600; letter-spacing: 1px; margin-top: 15px;
+    }
+    .btn-maps i { font-size: 1.3rem; margin: 0; color: inherit; }
+    .btn-maps:hover { background: #d4b68a; color: #0c0c0c; }
+    .btn-maps:hover i { color: #0c0c0c; }
+    .maps-note {
+      font-size: 1.1rem; color: #aaa; margin-top: 15px; font-style: italic;
+    }
+
+    /* TARJETA BBVA: NÚMERO BLANCO ASEGURADO */
+    .bbva-card {
+      max-width: 500px;
+      margin: 30px auto;
+      background: linear-gradient(145deg, #002d5a, #001b3a);
+      border-radius: 24px;
+      padding: 35px;
+      color: white;
+      position: relative;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+      transition: 0.4s;
+      border: 1px solid rgba(212,182,138,0.3);
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .bbva-card:hover { transform: scale(1.02); box-shadow: 0 30px 60px rgba(212,182,138,0.3); }
+    .card-logo { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+    .card-chip {
+      width: 45px; height: 32px; background: linear-gradient(135deg, #d4b68a, #b49450);
+      border-radius: 8px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .card-type {
+      font-weight: 700; font-size: 2rem; color: #d4b68a; letter-spacing: 2px;
+      font-family: 'Cormorant Garamond', serif; text-transform: uppercase;
+    }
+    .card-number-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+      background: rgba(255,255,255,0.1);
+      padding: 15px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s;
+      border: 1px solid rgba(255,255,255,0.2);
+      white-space: nowrap;
+    }
+    .card-number-container:hover { background: rgba(212,182,138,0.2); border-color: #d4b68a; }
+    .card-number {
+      font-family: 'Courier New', monospace;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      word-spacing: 4px;
+      flex: 1;
+      text-shadow: 0 0 5px rgba(255,255,255,0.3);
+      /* Forzar blanco en todos los navegadores */
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+      background: transparent !important;
+    }
+    .copy-icon {
+      color: #d4b68a;
+      font-size: 1.5rem;
+    }
+    .card-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      margin-top: 15px;
+    }
+    .card-holder span, .card-exp span { display: block; font-size: 0.9rem; color: rgba(255,255,255,0.6); }
+    .card-holder strong, .card-exp strong { font-size: 1.3rem; letter-spacing: 1px; }
+    .copy-alert { color: #d4b68a; margin-top: 10px; font-size: 1rem; min-height: 24px; text-align: center; }
+    .voluntary-note {
+      text-align: center; color: #aaa; font-size: 1.2rem; margin-top: 10px; font-style: italic;
+    }
+    .gift-description {
+      text-align: center; color: #aaa; margin-bottom: 20px; font-size: 1.3rem;
+    }
+
+    /* GALERÍA */
+    .gallery-section { padding: 60px 20px; }
+    .gallery-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1000px; margin: 40px auto;
+    }
+    .gallery-item {
+      position: relative; background: #1a1a1a; border-radius: 20px; padding: 15px;
+      box-shadow: 0 20px 30px rgba(0,0,0,0.5); overflow: hidden;
+    }
+    .gallery-item::before {
+      content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
+      background: linear-gradient(45deg, #d4b68a, #f0ede9, #d4b68a, #f0ede9);
+      background-size: 400% 400%; border-radius: 22px; opacity: 0;
+      transition: opacity 0.4s; z-index: 0;
+      animation: rotateGlow 3s linear infinite;
+    }
+    .gallery-item:hover::before { opacity: 1; }
+    @keyframes rotateGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .image-wrapper {
+      position: relative; width: 100%; height: 450px; border-radius: 12px; overflow: hidden; z-index: 2;
+      background: #0c0c0c; display: flex; align-items: center; justify-content: center;
+    }
+    .image-wrapper img {
+      max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;
+      display: block; margin: 0 auto; transition: transform 0.4s;
+    }
+    .gallery-item:hover .image-wrapper img { transform: scale(1.02); }
+    .image-wrapper::after {
+      content: "R&D"; position: absolute; bottom: 10px; right: 10px; color: rgba(212,182,138,0.2);
+      font-size: 1.2rem; font-weight: bold; pointer-events: none; z-index: 3;
+    }
+
+    /* CONFIRMACIÓN */
+    .rsvp-card {
+      max-width: 700px; margin: 0 auto; background: rgba(20,20,20,0.8); backdrop-filter: blur(8px);
+      border: 1px solid #d4b68a; border-radius: 60px; padding: 60px 40px; text-align: center;
+    }
+    .rsvp-card h2 { font-size: 3.5rem; color: #d4b68a; margin-bottom: 20px; font-family: 'Parisienne', cursive; }
+    .familia-confirm {
+      margin-bottom: 40px;
+    }
+    .familia-confirm .label {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #aaa;
+    }
+    .familia-confirm .nombre {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #d4b68a;
+      line-height: 1.2;
+      font-family: 'Parisienne', cursive;
+      word-break: break-word;
+    }
+    .botones-confirmacion {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .btn-confirmar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: transparent;
+      border: 2px solid #d4b68a;
+      color: #d4b68a;
+      padding: 16px 30px;
+      border-radius: 60px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 100%;
+      text-decoration: none;
+    }
+    .btn-confirmar i { font-size: 1.6rem; }
+    .btn-confirmar.asistir:hover {
+      background: #25D366;
+      border-color: #25D366;
+      color: #0c0c0c;
+    }
+    .btn-confirmar.no-asistir:hover {
+      background: #a59c94;
+      border-color: #a59c94;
+      color: #0c0c0c;
+    }
+
+    /* Footer */
+    .footer { padding: 50px; text-align: center; background: #0a0a0a; border-top: 1px solid #222; }
+    .footer p { font-family: 'Parisienne', cursive; font-size: 2rem; color: #d4b68a; }
+
+    /* Botón flotante */
+    .go-top {
+      position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+      background: rgba(212,182,138,0.2); backdrop-filter: blur(5px); border: 1px solid #d4b68a;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4b68a;
+      font-size: 1.5rem; cursor: pointer; opacity: 0; transition: 0.3s; pointer-events: none; z-index: 100;
+    }
+    .go-top.visible { opacity: 0.7; pointer-events: all; }
+    .go-top:hover { opacity: 1; transform: scale(1.1); }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .bible-verses { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .image-wrapper { height: 350px; }
+      .timeline-item { flex: 0 0 220px; padding: 25px 15px; }
+      .timeline-time { font-size: 2.2rem; }
+      .timeline-title { font-size: 1.6rem; }
+      .timeline-desc { font-size: 1.2rem; }
+      .place-card { padding: 30px 20px; }
+      .place-card h3 { font-size: 2.2rem; }
+      .place-card p { font-size: 1.2rem; }
+      /* Ajustes específicos para la tarjeta BBVA en móvil */
+      .card-number-container {
+        padding: 10px 12px;
+      }
+      .card-number {
+        font-size: 1rem !important;
+        letter-spacing: 1px;
+        word-spacing: 2px;
+      }
+      .copy-icon {
+        font-size: 1.2rem;
+      }
+      .bbva-card {
+        padding: 25px 20px;
+      }
+    }
+    /* Para pantallas muy pequeñas */
+    @media (max-width: 400px) {
+      .card-number {
+        font-size: 0.9rem !important;
+        letter-spacing: 0.5px;
+      }
+      .copy-icon {
+        font-size: 1rem;
+      }
+    }
+  </style>
+  <script>
+    document.addEventListener('contextmenu', event => event.preventDefault());
+  </script>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-sub">LA BODA DE</p>
+      <h1 class="hero-title">Roney & Dulce</h1>
+      <div class="hero-date">19·abril·2026</div>
+      <div class="hero-btn">
+        <button class="btn-invitation" id="startExperience">Ver invitación</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SALUDO -->
+  <section class="section" id="primer-seccion" data-aos="fade-up">
+    <div class="container">
+      <div class="greeting">
+        <p class="family">¡Nos Casamos!</p>
+        <p>Estamos listos para decir: <b>Si Acepto</b></p>
+        <p>Y queremos que tu seas parte de ese momento tan especial, te esperamos para celebrar juntos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEXTOS BÍBLICOS -->
+  <section class="section" data-aos="fade-up">
+    <div class="container">
+      <h2 class="section-title">Para ambos</h2>
+      <div class="bible-verses">
+        <div class="verse">
+          <i class="fas fa-heart"></i>
+          <h3>El</h3>
+          <p>"Agradable es el aroma de tus aceites, tu nombre es como aceite aromático que se derrama."</p>
+          <p style="margin-top:15px;">— Can. 1:3</p>
+        </div>
+        <div class="verse">
+          <i class="fas fa-heart"></i>
+          <h3>Ella</h3>
+          <p>"Mi amado es mío y yo soy suya. El pastorea el rebaño entre los lirios."</p>
+          <p style="margin-top:15px;">— Can. 2:16</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section class="section" data-aos="fade-up">
+    <div class="container">
+      <div class="countdown-wrapper">
+        <div class="countdown-title">Faltan</div>
+        <div class="countdown-grid" id="countdown">
+          <div class="countdown-item">
+            <span class="number" id="dias">00</span>
+            <span class="label">días</span>
+          </div>
+          <div class="countdown-item">
+            <span class="number" id="horas">00</span>
+            <span class="label">horas</span>
+          </div>
+          <div class="countdown-item">
+            <span class="number" id="minutos">00</span>
+            <span class="label">min</span>
+          </div>
+          <div class="countdown-item">
+            <span class="number" id="segundos">00</span>
+            <span class="label">seg</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMA -->
+  <section class="timeline-section" data-aos="fade-up">
+    <div class="container">
+      <h2 class="section-title">Programa</h2>
+      <div class="timeline-container">
+        <div class="timeline-horizontal">
+          <div class="timeline-item">
+            <div class="timeline-time">3:30 Pm</div>
+            <div class="timeline-icon">🎤</div>
+            <div class="timeline-title">Discurso</div>
+            <div class="timeline-desc">Consejo para los novios, basado en la biblia</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">4:05 Pm</div>
+            <div class="timeline-icon">📷</div>
+            <div class="timeline-title">Fotos</div>
+            <div class="timeline-desc">Fotografía el momento con nosotros</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">4:30 Pm</div>
+            <div class="timeline-icon">📀</div>
+            <div class="timeline-title">Baile de los Novios</div>
+            <div class="timeline-desc">Baile preparado y detalle con la familia</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">5:30 Pm</div>
+            <div class="timeline-icon">💃🏻</div>
+            <div class="timeline-title">Pista Libre</div>
+            <div class="timeline-desc">Disfruta de la música libremente</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">6:30 Pm</div>
+            <div class="timeline-icon">🍽️</div>
+            <div class="timeline-title">Cena</div>
+            <div class="timeline-desc">Comida en compañia de amigos y familia</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">7:00 Pm</div>
+            <div class="timeline-icon">🍰</div>
+            <div class="timeline-title">Postre y Recuerdos</div>
+            <div class="timeline-desc">Se acerca el final y nos despedimos con recuerdos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UBICACIÓN -->
+  <section class="section" data-aos="fade-up">
+    <div class="container">
+      <h2 class="section-title">Lugar</h2>
+      <div class="place-card">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3>Salón de eventos: San Fernando</h3>
+        <p>C. 55 165, Padre Eterno, 51645 Tekax de Álvaro Obregón, Yuc.</p>
+        <a href="https://share.google/sj4orK7FBA2xTq3sF" target="_blank" class="btn-maps">
+          <i class="fas fa-map"></i> Ver en Google Maps
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MESA DE REGALOS -->
+  <section class="section" data-aos="fade-up">
+    <div class="container">
+      <h2 class="section-title">Mesa de regalos</h2>
+      <p class="gift-description">Su presencia es el mejor regalo para nosotros</p>
+      <div class="bbva-card">
+        <div class="card-logo">
+          <div class="card-chip"></div>
+          <div class="card-type">BBVA</div>
+        </div>
+        <div class="card-number-container" id="cardNumberContainer">
+          <span class="card-number" id="accountNumber">4152 3145 7569 2770</span>
+          <span class="copy-icon" id="copyIcon"><i class="far fa-copy"></i></span>
+        </div>
+        <div class="card-details">
+          <div class="card-holder">
+            <span>Titular</span>
+            <strong>RONEY & DULCE</strong>
+          </div>
+        </div>
+      </div>
+      <div id="copyMessage" class="copy-alert"></div>
+      <p class="voluntary-note">✨ Contribución totalmente voluntaria, no obligatoria ✨</p>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section class="gallery-section" data-aos="fade-up">
+    <div class="container">
+      <h2 class="section-title">Nuestros momentos</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item"><div class="image-wrapper"><img src="N1.jpeg" alt="Roney y Dulce 1"></div></div>
+        <div class="gallery-item"><div class="image-wrapper"><img src="N2.jpeg" alt="Roney y Dulce 2"></div></div>
+        <div class="gallery-item"><div class="image-wrapper"><img src="N3.jpeg" alt="Roney y Dulce 3"></div></div>
+        <div class="gallery-item"><div class="image-wrapper"><img src="N4.jpeg" alt="Roney y Dulce 4"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONFIRMACIÓN -->
+  <section class="section" data-aos="fade-up">
+    <div class="container">
+      <div class="rsvp-card">
+        <h2>Confirmar tu asistencia</h2>
+        <div class="familia-confirm">
+          <div class="label">familia</div>
+          <div class="nombre" id="familiaNombre">Ernesto Avila (2)</div>
+        </div>
+        <div class="botones-confirmacion">
+          <button class="btn-confirmar asistir" id="btnAsistir"><i class="fab fa-whatsapp"></i> Sí, asistiré</button>
+          <button class="btn-confirmar no-asistir" id="btnNoAsistir"><i class="fab fa-whatsapp"></i> No podré asistir</button>
+        </div>
+        <p style="margin-top:30px; font-size:1rem; color:#888;">*Se abrirá WhatsApp para enviar tu confirmación</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>Roney & Dulce · 19 Abril 2026</p>
+  </footer>
+
+  <!-- BOTÓN FLOTANTE -->
+  <div class="go-top" id="goTop"><i class="fas fa-chevron-up"></i></div>
+
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    AOS.init({ duration: 1200, once: true, offset: 100 });
+
+    // COUNTDOWN
+    const targetDate = new Date(2026, 3, 19, 15, 30, 0).getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+      if (diff < 0) {
+        document.getElementById('dias').innerText = '00';
+        document.getElementById('horas').innerText = '00';
+        document.getElementById('minutos').innerText = '00';
+        document.getElementById('segundos').innerText = '00';
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (86400000)) / (3600000));
+      const mins = Math.floor((diff % 3600000) / 60000);
+      const secs = Math.floor((diff % 60000) / 1000);
+      document.getElementById('dias').innerText = days < 10 ? '0' + days : days;
+      document.getElementById('horas').innerText = hours < 10 ? '0' + hours : hours;
+      document.getElementById('minutos').innerText = mins < 10 ? '0' + mins : mins;
+      document.getElementById('segundos').innerText = secs < 10 ? '0' + secs : secs;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // CONFIRMACIÓN WHATSAPP
+    const familiaNombre = document.getElementById('familiaNombre').textContent.trim();
+    const telefono = '529845376620';
+
+    function generarLink(asistencia) {
+      let mensaje = '';
+      if (asistencia === 'si') {
+        mensaje = `Hola, soy ${familiaNombre} y confirmo que ASISTIRÉ a la boda de Roney y Dulce. ¡Muchas gracias!`;
+      } else {
+        mensaje = `Hola, soy ${familiaNombre} y lamentablemente NO PODRÉ asistir a la boda de Roney y Dulce. ¡Muchas gracias!`;
+      }
+      return `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+    }
+
+    document.getElementById('btnAsistir').addEventListener('click', (e) => {
+      e.preventDefault();
+      window.open(generarLink('si'), '_blank');
+    });
+
+    document.getElementById('btnNoAsistir').addEventListener('click', (e) => {
+      e.preventDefault();
+      window.open(generarLink('no'), '_blank');
+    });
+
+    // COPIAR NÚMERO
+    const cardContainer = document.getElementById('cardNumberContainer');
+    const accountNumberSpan = document.getElementById('accountNumber');
+    const copyMessage = document.getElementById('copyMessage');
+    cardContainer.addEventListener('click', () => {
+      navigator.clipboard.writeText(accountNumberSpan.innerText).then(() => {
+        copyMessage.innerText = '✓ Número copiado';
+        setTimeout(() => { copyMessage.innerText = ''; }, 3000);
+      }).catch(() => {
+        copyMessage.innerText = 'Error al copiar';
+      });
+    });
+
+    // BOTÓN VOLVER ARRIBA
+    const goTop = document.getElementById('goTop');
+    window.addEventListener('scroll', () => {
+      goTop.classList.toggle('visible', window.scrollY > 500);
+    });
+    goTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // PARALLAX
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to('.hero-bg', {
+      y: '20%',
+      ease: 'none',
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+    });
+
+    // MÚSICA
+    const startBtn = document.getElementById('startExperience');
+    const primerSeccion = document.getElementById('primer-seccion');
+    let audio = new Audio('Song.mp3');
+    audio.loop = false;
+    let musicaIniciada = false;
+
+    startBtn.addEventListener('click', () => {
+      primerSeccion.scrollIntoView({ behavior: 'smooth' });
+      if (!musicaIniciada) {
+        audio.play().then(() => {
+          musicaIniciada = true;
+        }).catch(e => {
+          console.log('Error al reproducir música:', e);
+        });
+      }
+    });
+
+    audio.addEventListener('ended', () => {
+      console.log('Canción finalizada');
+    });
+  </script>
+</body>
+</html>
