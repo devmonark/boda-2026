@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Roney & Dulce · Boda de lujo</title>
+  <!-- Evitar que iOS convierta números en azul -->
+  <meta name="format-detection" content="telephone=no">
   <!-- Fuentes refinadas -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -214,11 +216,18 @@
       font-size: 1.1rem; color: #aaa; margin-top: 15px; font-style: italic;
     }
 
-    /* Tarjeta BBVA */
+    /* TARJETA BBVA: NÚMERO BLANCO ASEGURADO */
     .bbva-card {
-      max-width: 500px; margin: 30px auto; background: linear-gradient(145deg, #002d5a, #001b3a);
-      border-radius: 24px; padding: 35px; color: white; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-      transition: 0.4s; border: 1px solid rgba(212,182,138,0.3);
+      max-width: 500px;
+      margin: 30px auto;
+      background: linear-gradient(145deg, #002d5a, #001b3a);
+      border-radius: 24px;
+      padding: 35px;
+      color: white;
+      position: relative;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+      transition: 0.4s;
+      border: 1px solid rgba(212,182,138,0.3);
       font-family: 'Cormorant Garamond', serif;
     }
     .bbva-card:hover { transform: scale(1.02); box-shadow: 0 30px 60px rgba(212,182,138,0.3); }
@@ -232,20 +241,41 @@
       font-family: 'Cormorant Garamond', serif; text-transform: uppercase;
     }
     .card-number-container {
-      display: flex; align-items: center; gap: 15px; margin-bottom: 25px; background: rgba(255,255,255,0.1);
-      padding: 15px 20px; border-radius: 50px; cursor: pointer; transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+      background: rgba(255,255,255,0.1);
+      padding: 15px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s;
       border: 1px solid rgba(255,255,255,0.2);
       white-space: nowrap;
     }
     .card-number-container:hover { background: rgba(212,182,138,0.2); border-color: #d4b68a; }
     .card-number {
-      font-family: 'Courier New', monospace; font-size: 1.5rem; letter-spacing: 2px; word-spacing: 4px; flex: 1;
+      font-family: 'Courier New', monospace;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      word-spacing: 4px;
+      flex: 1;
       text-shadow: 0 0 5px rgba(255,255,255,0.3);
+      /* Forzar blanco en todos los navegadores */
       color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+      background: transparent !important;
     }
-    .copy-icon { color: #d4b68a; font-size: 1.5rem; }
+    .copy-icon {
+      color: #d4b68a;
+      font-size: 1.5rem;
+    }
     .card-details {
-      display: flex; justify-content: space-between; align-items: center; font-size: 1.2rem; text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.2rem;
+      text-transform: uppercase;
       margin-top: 15px;
     }
     .card-holder span, .card-exp span { display: block; font-size: 0.9rem; color: rgba(255,255,255,0.6); }
@@ -384,7 +414,7 @@
         padding: 10px 12px;
       }
       .card-number {
-        font-size: 1rem;
+        font-size: 1rem !important;
         letter-spacing: 1px;
         word-spacing: 2px;
       }
@@ -398,7 +428,7 @@
     /* Para pantallas muy pequeñas */
     @media (max-width: 400px) {
       .card-number {
-        font-size: 0.9rem;
+        font-size: 0.9rem !important;
         letter-spacing: 0.5px;
       }
       .copy-icon {
@@ -558,7 +588,7 @@
           <div class="card-type">BBVA</div>
         </div>
         <div class="card-number-container" id="cardNumberContainer">
-          <span style="color: white;" class="card-number" id="accountNumber">4152 3145 7569 2770</span>
+          <span class="card-number" id="accountNumber">4152 3145 7569 2770</span>
           <span class="copy-icon" id="copyIcon"><i class="far fa-copy"></i></span>
         </div>
         <div class="card-details">
