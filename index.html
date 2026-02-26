@@ -620,6 +620,8 @@
       <div class="gallery-grid">
         <div class="gallery-item"><div class="image-wrapper"><img src="N1.jpeg" alt="Roney y Dulce 1"></div></div>
         <div class="gallery-item"><div class="image-wrapper"><img src="N2.jpeg" alt="Roney y Dulce 2"></div></div>
+        <div class="gallery-item"><div class="image-wrapper"><img src="N3.jpeg" alt="Roney y Dulce 3"></div></div>
+        <div class="gallery-item"><div class="image-wrapper"><img src="N4.jpeg" alt="Roney y Dulce 4"></div></div>
       </div>
     </div>
   </section>
@@ -631,7 +633,7 @@
         <h2>Confirmar tu asistencia</h2>
         <div class="familia-confirm">
           <div class="label">familia</div>
-          <div class="nombre" id="familiaNombre">Joel Tamayo (4)</div>
+          <div class="nombre" id="familiaNombre">Nombre (1)</div>
         </div>
         <div class="botones-confirmacion">
           <button class="btn-confirmar asistir" id="btnAsistir"><i class="fab fa-whatsapp"></i> Sí, asistiré</button>
@@ -692,7 +694,7 @@
       if (asistencia === 'si') {
         mensaje = `Hola, soy ${familiaNombre} y confirmo que ASISTIRÉ a la boda de Roney y Dulce. ¡Muchas gracias!`;
       } else {
-        mensaje = `Hola, soy ${familiaNombre} y lamentablemente NO PODRÉ asistir a la boda de Roney y Dulce. Quedamos atentos a la siguiente.`;
+        mensaje = `Hola, soy ${familiaNombre} y lamentablemente NO PODRÉ asistir a la boda de Roney y Dulce. ¡Muchas gracias!`;
       }
       return `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
     }
