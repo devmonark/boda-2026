@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Roney & Dulce · Boda de lujo</title>
-  <!-- Metaetiquetas para compartir en redes (Open Graph y Twitter) -->
+  <!-- Metaetiquetas para compartir en redes -->
   <meta property="og:title" content="Roney & Dulce · Boda 2026">
   <meta property="og:description" content="Te esperamos para celebrar juntos este momento tan especial. Confirma tu asistencia.">
   <meta property="og:image" content="N1.jpeg">
-  <meta property="og:url" content="https://boda-rd.netlify.app/">
+  <meta property="og:url" content="https://tusitio.com/invitacion">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Roney & Dulce · Boda 2026">
@@ -298,40 +298,138 @@
       text-align: center; color: #aaa; margin-bottom: 20px; font-size: 1.3rem;
     }
 
-    /* GALERÍA */
-    .gallery-section { padding: 60px 20px; }
-    .gallery-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1000px; margin: 40px auto;
+    /* GALERÍA 3D (NUEVO ESTILO) */
+    :root {
+      --card-height: 400px;
+      --card-width: calc(var(--card-height) / 1.2);
     }
-    .gallery-item {
-      position: relative; background: #1a1a1a; border-radius: 20px; padding: 15px;
-      box-shadow: 0 20px 30px rgba(0,0,0,0.5); overflow: hidden;
+    .gallery-3d {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      max-width: 1000px;
+      margin: 40px auto;
+      justify-items: center;
     }
-    .gallery-item::before {
-      content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
-      background: linear-gradient(45deg, #d4b68a, #f0ede9, #d4b68a, #f0ede9);
-      background-size: 400% 400%; border-radius: 22px; opacity: 0;
-      transition: opacity 0.4s; z-index: 0;
-      animation: rotateGlow 3s linear infinite;
+    .card-3d {
+      width: var(--card-width);
+      height: var(--card-height);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      perspective: 2500px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
-    .gallery-item:hover::before { opacity: 1; }
-    @keyframes rotateGlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    .card-3d:hover {
+      transform: scale(1.02);
     }
-    .image-wrapper {
-      position: relative; width: 100%; height: 450px; border-radius: 12px; overflow: hidden; z-index: 2;
-      background: #0c0c0c; display: flex; align-items: center; justify-content: center;
+    .card-3d .wrapper {
+      transition: all 0.5s;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 30px rgba(0,0,0,0.5);
     }
-    .image-wrapper img {
-      max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;
-      display: block; margin: 0 auto; transition: transform 0.4s;
+    .card-3d .cover-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.8) sepia(0.2);
     }
-    .gallery-item:hover .image-wrapper img { transform: scale(1.02); }
-    .image-wrapper::after {
-      content: "R&D"; position: absolute; bottom: 10px; right: 10px; color: rgba(212,182,138,0.2);
-      font-size: 1.2rem; font-weight: bold; pointer-events: none; z-index: 3;
+    .card-3d:hover .wrapper {
+      transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+      box-shadow: 2px 35px 32px -8px rgba(212, 182, 138, 0.3);
+    }
+    .wrapper::before,
+    .wrapper::after {
+      content: "";
+      opacity: 0;
+      width: 100%;
+      height: 80px;
+      transition: all 0.5s;
+      position: absolute;
+      left: 0;
+      z-index: 2;
+    }
+    .wrapper::before {
+      top: 0;
+      height: 100%;
+      background-image: linear-gradient(
+        to top,
+        transparent 46%,
+        rgba(10,10,10,0.5) 68%,
+        rgba(10,10,10) 97%
+      );
+    }
+    .wrapper::after {
+      bottom: 0;
+      opacity: 1;
+      background-image: linear-gradient(
+        to bottom,
+        transparent 46%,
+        rgba(10,10,10,0.5) 68%,
+        rgba(10,10,10) 97%
+      );
+    }
+    .card-3d:hover .wrapper::before,
+    .card-3d:hover .wrapper::after {
+      opacity: 1;
+    }
+    .card-3d:hover .wrapper::after {
+      height: 120px;
+    }
+    .sticker {
+      width: 100%;
+      height: auto;
+      position: absolute;
+      z-index: 3;
+      opacity: 0;
+      transition: all 0.5s;
+      bottom: 0;
+      filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+    }
+    .card-3d:hover .sticker {
+      opacity: 1;
+      transform: translate3d(0%, -20%, 100px) scale(1.1);
+    }
+    /* Ajustes para móvil */
+    @media (max-width: 700px) {
+      .gallery-3d {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .card-3d {
+        --card-height: 350px;
+      }
+      .card-3d:hover {
+        transform: none;
+      }
+      .card-3d .wrapper {
+        transform: none;
+      }
+      .card-3d:hover .wrapper {
+        transform: none;
+        box-shadow: 0 20px 30px rgba(0,0,0,0.5);
+      }
+      .sticker {
+        opacity: 1;
+        transform: translate3d(0%, -10%, 50px);
+        width: 85%;
+        bottom: 10%;
+      }
+      .wrapper::before, .wrapper::after {
+        opacity: 0.5;
+      }
+    }
+    @media (max-width: 400px) {
+      .card-3d {
+        --card-height: 300px;
+      }
     }
 
     /* CONFIRMACIÓN */
@@ -407,11 +505,9 @@
     .go-top.visible { opacity: 0.7; pointer-events: all; }
     .go-top:hover { opacity: 1; transform: scale(1.1); }
 
-    /* Responsive */
+    /* Responsive general */
     @media (max-width: 700px) {
       .bible-verses { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: 1fr; }
-      .image-wrapper { height: 350px; }
       .timeline-item { flex: 0 0 220px; padding: 25px 15px; }
       .timeline-time { font-size: 2.2rem; }
       .timeline-title { font-size: 1.6rem; }
@@ -419,7 +515,7 @@
       .place-card { padding: 30px 20px; }
       .place-card h3 { font-size: 2.2rem; }
       .place-card p { font-size: 1.2rem; }
-      /* Ajustes específicos para la tarjeta BBVA en móvil */
+      /* Ajustes para la tarjeta BBVA */
       .card-number-container {
         padding: 10px 12px;
       }
@@ -435,7 +531,6 @@
         padding: 25px 20px;
       }
     }
-    /* Para pantallas muy pequeñas */
     @media (max-width: 400px) {
       .card-number {
         font-size: 0.9rem !important;
@@ -613,15 +708,25 @@
     </div>
   </section>
 
-  <!-- GALERÍA -->
+  <!-- GALERÍA 3D (NUEVA) -->
   <section class="gallery-section" data-aos="fade-up">
     <div class="container">
       <h2 class="section-title">Nuestros momentos</h2>
-      <div class="gallery-grid">
-        <div class="gallery-item"><div class="image-wrapper"><img src="N1.jpeg" alt="Roney y Dulce 1"></div></div>
-        <div class="gallery-item"><div class="image-wrapper"><img src="N2.jpeg" alt="Roney y Dulce 2"></div></div>
-        <div class="gallery-item"><div class="image-wrapper"><img src="N3.jpeg" alt="Roney y Dulce 3"></div></div>
-        <div class="gallery-item"><div class="image-wrapper"><img src="N4.jpeg" alt="Roney y Dulce 4"></div></div>
+      <div class="gallery-3d">
+        <!-- Tarjeta 1 -->
+        <div class="card-3d">
+          <div class="wrapper">
+            <img src="N1.jpeg" alt="Fondo" class="cover-image">
+          </div>
+          <img src="NS1.png" alt="Sticker Roney y Dulce" class="sticker">
+        </div>
+        <!-- Tarjeta 2 -->
+        <div class="card-3d">
+          <div class="wrapper">
+            <img src="N2.jpeg" alt="Fondo" class="cover-image">
+          </div>
+          <img src="NS2.png" alt="Sticker Roney y Dulce" class="sticker">
+        </div>
       </div>
     </div>
   </section>
@@ -633,7 +738,7 @@
         <h2>Confirmar tu asistencia</h2>
         <div class="familia-confirm">
           <div class="label">familia</div>
-          <div class="nombre" id="familiaNombre">Joel Tamayo (4)</div>
+          <div class="nombre" id="familiaNombre">Catzim Tamayo (2)</div>
         </div>
         <div class="botones-confirmacion">
           <button class="btn-confirmar asistir" id="btnAsistir"><i class="fab fa-whatsapp"></i> Sí, asistiré</button>
