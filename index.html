@@ -398,6 +398,13 @@
       opacity: 1;
       transform: translate3d(0%, -20%, 100px) scale(1.1);
     }
+
+    /* Clase para mostrar sticker en móvil al hacer clic */
+    .sticker.show-sticker {
+      opacity: 1;
+      transform: translate3d(0%, -20%, 100px) scale(1.1);
+    }
+
     /* Ajustes para móvil */
     @media (max-width: 700px) {
       .gallery-3d {
@@ -418,13 +425,21 @@
         box-shadow: 0 20px 30px rgba(0,0,0,0.5);
       }
       .sticker {
-        opacity: 1;
+        opacity: 0; /* Oculto por defecto */
         transform: translate3d(0%, -10%, 50px);
         width: 85%;
         bottom: 10%;
       }
+      .sticker.show-sticker {
+        opacity: 1;
+        transform: translate3d(0%, -20%, 100px) scale(1.1);
+      }
       .wrapper::before, .wrapper::after {
         opacity: 0.5;
+      }
+      /* Quitar hover en móvil */
+      .card-3d:hover .sticker {
+        opacity: 0; /* No se muestra por hover */
       }
     }
     @media (max-width: 400px) {
@@ -715,18 +730,18 @@
       <h2 class="section-title">Nuestros momentos</h2>
       <div class="gallery-3d">
         <!-- Tarjeta 1 -->
-        <div class="card-3d">
+        <div class="card-3d" data-sticker="NS1.png">
           <div class="wrapper">
             <img src="N1.jpeg" alt="Fondo" class="cover-image">
           </div>
-          <img src="NS1.png" alt="Sticker Roney y Dulce" class="sticker">
+          <img src="NS1.png" alt="Sticker Roney y Dulce" class="sticker" id="sticker1">
         </div>
         <!-- Tarjeta 2 -->
-        <div class="card-3d">
+        <div class="card-3d" data-sticker="NS2.png">
           <div class="wrapper">
             <img src="N2.jpeg" alt="Fondo" class="cover-image">
           </div>
-          <img src="NS2.png" alt="Sticker Roney y Dulce" class="sticker">
+          <img src="NS2.png" alt="Sticker Roney y Dulce" class="sticker" id="sticker2">
         </div>
       </div>
     </div>
@@ -865,10 +880,36 @@
       console.log('Canción finalizada');
     });
 
-    // --- PREVENIR QUE LAS IMÁGENES DE LA GALERÍA SE ABRAN AL HACER CLIC ---
-    document.querySelectorAll('.card-3d img').forEach(img => {
-      img.addEventListener('click', (e) => e.preventDefault());
-      img.addEventListener('contextmenu', (e) => e.preventDefault()); // opcional: evitar menú contextual
+    // --- COMPORTAMIENTO PARA MÓVIL: mostrar sticker al hacer clic ---
+    function isMobile() {
+      return window.innerWidth <= 700;
+    }
+
+    const tarjetas = document.querySelectorAll('.card-3d');
+    tarjetas.forEach(tarjeta => {
+      const sticker = tarjeta.querySelector('.sticker');
+      if (!sticker) return;
+
+      tarjeta.addEventListener('click', (e) => {
+        // Solo en móvil
+        if (isMobile()) {
+          e.preventDefault(); // Evitar cualquier comportamiento por defecto
+          sticker.classList.toggle('show-sticker');
+        }
+      });
+
+      // Prevenir que se abra la imagen al hacer clic en cualquier parte
+      tarjeta.querySelectorAll('img').forEach(img => {
+        img.addEventListener('click', (e) => e.preventDefault());
+      });
+    });
+
+    // Escuchar cambios de tamaño para resetear si es necesario
+    window.addEventListener('resize', () => {
+      if (!isMobile()) {
+        // Si no es móvil, aseguramos que los stickers no tengan la clase show-sticker
+        document.querySelectorAll('.sticker').forEach(s => s.classList.remove('show-sticker'));
+      }
     });
   </script>
 </body>
