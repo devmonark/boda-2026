@@ -392,6 +392,7 @@
       transition: all 0.5s;
       bottom: 0;
       filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+      pointer-events: none; /* Evita que el sticker capture clics */
     }
     .card-3d:hover .sticker {
       opacity: 1;
@@ -708,7 +709,7 @@
     </div>
   </section>
 
-  <!-- GALERÍA 3D (NUEVA) -->
+  <!-- GALERÍA 3D -->
   <section class="gallery-section" data-aos="fade-up">
     <div class="container">
       <h2 class="section-title">Nuestros momentos</h2>
@@ -862,6 +863,12 @@
 
     audio.addEventListener('ended', () => {
       console.log('Canción finalizada');
+    });
+
+    // --- PREVENIR QUE LAS IMÁGENES DE LA GALERÍA SE ABRAN AL HACER CLIC ---
+    document.querySelectorAll('.card-3d img').forEach(img => {
+      img.addEventListener('click', (e) => e.preventDefault());
+      img.addEventListener('contextmenu', (e) => e.preventDefault()); // opcional: evitar menú contextual
     });
   </script>
 </body>
