@@ -120,7 +120,7 @@
     .verse h3 { font-size: 2rem; color: #d4b68a; margin-bottom: 15px; font-family: 'Parisienne', cursive; }
     .verse p { font-size: 1.3rem; font-style: italic; color: #ccc; }
 
-    /* COUNTDOWN ELEGANTE (nuevo) */
+    /* COUNTDOWN ELEGANTE */
     .countdown-wrapper {
       background: rgba(20,20,20,0.8);
       backdrop-filter: blur(8px);
@@ -214,7 +214,7 @@
       font-size: 1.1rem; color: #aaa; margin-top: 15px; font-style: italic;
     }
 
-    /* Tarjeta BBVA (número en una línea, blanco asegurado) */
+    /* Tarjeta BBVA */
     .bbva-card {
       max-width: 500px; margin: 30px auto; background: linear-gradient(145deg, #002d5a, #001b3a);
       border-radius: 24px; padding: 35px; color: white; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.6);
@@ -235,13 +235,13 @@
       display: flex; align-items: center; gap: 15px; margin-bottom: 25px; background: rgba(255,255,255,0.1);
       padding: 15px 20px; border-radius: 50px; cursor: pointer; transition: 0.3s;
       border: 1px solid rgba(255,255,255,0.2);
-      white-space: nowrap; /* número en una línea */
+      white-space: nowrap;
     }
     .card-number-container:hover { background: rgba(212,182,138,0.2); border-color: #d4b68a; }
     .card-number {
       font-family: 'Courier New', monospace; font-size: 1.5rem; letter-spacing: 2px; word-spacing: 4px; flex: 1;
       text-shadow: 0 0 5px rgba(255,255,255,0.3);
-      color: #ffffff !important; /* forzar blanco */
+      color: #ffffff !important;
     }
     .copy-icon { color: #d4b68a; font-size: 1.5rem; }
     .card-details {
@@ -294,7 +294,7 @@
       font-size: 1.2rem; font-weight: bold; pointer-events: none; z-index: 3;
     }
 
-    /* RSVP (nuevo diseño con nombre de familia y dos botones) */
+    /* CONFIRMACIÓN */
     .rsvp-card {
       max-width: 700px; margin: 0 auto; background: rgba(20,20,20,0.8); backdrop-filter: blur(8px);
       border: 1px solid #d4b68a; border-radius: 60px; padding: 60px 40px; text-align: center;
@@ -357,7 +357,7 @@
     .footer { padding: 50px; text-align: center; background: #0a0a0a; border-top: 1px solid #222; }
     .footer p { font-family: 'Parisienne', cursive; font-size: 2rem; color: #d4b68a; }
 
-    /* Botón flotante original (go-top) */
+    /* Botón flotante */
     .go-top {
       position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
       background: rgba(212,182,138,0.2); backdrop-filter: blur(5px); border: 1px solid #d4b68a;
@@ -379,7 +379,31 @@
       .place-card { padding: 30px 20px; }
       .place-card h3 { font-size: 2.2rem; }
       .place-card p { font-size: 1.2rem; }
-      .card-number { font-size: 1.2rem; } /* Ajuste para móvil */
+      /* Ajustes específicos para la tarjeta BBVA en móvil */
+      .card-number-container {
+        padding: 10px 12px;
+      }
+      .card-number {
+        font-size: 1rem;
+        letter-spacing: 1px;
+        word-spacing: 2px;
+      }
+      .copy-icon {
+        font-size: 1.2rem;
+      }
+      .bbva-card {
+        padding: 25px 20px;
+      }
+    }
+    /* Para pantallas muy pequeñas */
+    @media (max-width: 400px) {
+      .card-number {
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+      }
+      .copy-icon {
+        font-size: 1rem;
+      }
     }
   </style>
   <script>
@@ -388,7 +412,7 @@
 </head>
 <body>
 
-  <!-- HERO (sin flecha) -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
@@ -400,37 +424,9 @@
         <button class="btn-invitation" id="startExperience">Ver invitación</button>
       </div>
     </div>
-    <!-- Flecha eliminada -->
   </section>
 
-  <!-- COUNTDOWN ELEGANTE (nuevo) -->
-  <section class="section" data-aos="fade-up">
-    <div class="container">
-      <div class="countdown-wrapper">
-        <div class="countdown-title">Faltan</div>
-        <div class="countdown-grid" id="countdown">
-          <div class="countdown-item">
-            <span class="number" id="dias">00</span>
-            <span class="label">días</span>
-          </div>
-          <div class="countdown-item">
-            <span class="number" id="horas">00</span>
-            <span class="label">horas</span>
-          </div>
-          <div class="countdown-item">
-            <span class="number" id="minutos">00</span>
-            <span class="label">min</span>
-          </div>
-          <div class="countdown-item">
-            <span class="number" id="segundos">00</span>
-            <span class="label">seg</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SALUDO (primera sección después del hero) -->
+  <!-- SALUDO -->
   <section class="section" id="primer-seccion" data-aos="fade-up">
     <div class="container">
       <div class="greeting">
@@ -457,6 +453,33 @@
           <h3>Ella</h3>
           <p>"Mi amado es mío y yo soy suya. El pastorea el rebaño entre los lirios."</p>
           <p style="margin-top:15px;">— Can. 2:16</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section class="section" data-aos="fade-up">
+    <div class="container">
+      <div class="countdown-wrapper">
+        <div class="countdown-title">Faltan</div>
+        <div class="countdown-grid" id="countdown">
+          <div class="countdown-item">
+            <span class="number" id="dias">00</span>
+            <span class="label">días</span>
+          </div>
+          <div class="countdown-item">
+            <span class="number" id="horas">00</span>
+            <span class="label">horas</span>
+          </div>
+          <div class="countdown-item">
+            <span class="number" id="minutos">00</span>
+            <span class="label">min</span>
+          </div>
+          <div class="countdown-item">
+            <span class="number" id="segundos">00</span>
+            <span class="label">seg</span>
+          </div>
         </div>
       </div>
     </div>
@@ -524,7 +547,7 @@
     </div>
   </section>
 
-  <!-- MESA DE REGALOS (con número en una línea) -->
+  <!-- MESA DE REGALOS -->
   <section class="section" data-aos="fade-up">
     <div class="container">
       <h2 class="section-title">Mesa de regalos</h2>
@@ -563,14 +586,13 @@
     </div>
   </section>
 
-  <!-- CONFIRMACIÓN (nuevo diseño con nombre de familia y dos botones) -->
+  <!-- CONFIRMACIÓN -->
   <section class="section" data-aos="fade-up">
     <div class="container">
       <div class="rsvp-card">
         <h2>Confirmar tu asistencia</h2>
         <div class="familia-confirm">
           <div class="label">familia</div>
-          <!-- Cambia este nombre por el que quieras -->
           <div class="nombre" id="familiaNombre">Joel Tamayo (4)</div>
         </div>
         <div class="botones-confirmacion">
@@ -587,7 +609,7 @@
     <p>Roney & Dulce · 19 Abril 2026</p>
   </footer>
 
-  <!-- BOTÓN FLOTANTE ORIGINAL (go-top) -->
+  <!-- BOTÓN FLOTANTE -->
   <div class="go-top" id="goTop"><i class="fas fa-chevron-up"></i></div>
 
   <!-- SCRIPTS -->
@@ -598,13 +620,12 @@
   <script>
     AOS.init({ duration: 1200, once: true, offset: 100 });
 
-    // --- COUNTDOWN (19 de abril 2026 15:30) ---
-    const targetDate = new Date(2026, 3, 19, 15, 30, 0).getTime(); // abril = 3
+    // COUNTDOWN
+    const targetDate = new Date(2026, 3, 19, 15, 30, 0).getTime();
 
     function updateCountdown() {
       const now = new Date().getTime();
       const diff = targetDate - now;
-
       if (diff < 0) {
         document.getElementById('dias').innerText = '00';
         document.getElementById('horas').innerText = '00';
@@ -612,31 +633,28 @@
         document.getElementById('segundos').innerText = '00';
         return;
       }
-
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff % (86400000)) / (3600000));
       const mins = Math.floor((diff % 3600000) / 60000);
       const secs = Math.floor((diff % 60000) / 1000);
-
       document.getElementById('dias').innerText = days < 10 ? '0' + days : days;
       document.getElementById('horas').innerText = hours < 10 ? '0' + hours : hours;
       document.getElementById('minutos').innerText = mins < 10 ? '0' + mins : mins;
       document.getElementById('segundos').innerText = secs < 10 ? '0' + secs : secs;
     }
-
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // --- CONFIRMACIÓN POR WHATSAPP (dos botones) ---
+    // CONFIRMACIÓN WHATSAPP
     const familiaNombre = document.getElementById('familiaNombre').textContent.trim();
-    const telefono = '529845376620'; // <--- REEMPLAZAR CON TU NÚMERO
+    const telefono = '529845376620';
 
     function generarLink(asistencia) {
       let mensaje = '';
       if (asistencia === 'si') {
         mensaje = `Hola, soy ${familiaNombre} y confirmo que ASISTIRÉ a la boda de Roney y Dulce. ¡Muchas gracias!`;
       } else {
-        mensaje = `Hola, soy ${familiaNombre} y lamentablemente NO PODRÉ asistir a la boda de Roney y Dulce. ¡Muchas gracias!`;
+        mensaje = `Hola, soy ${familiaNombre} y lamentablemente NO PODRÉ asistir a la boda de Roney y Dulce. Quedamos atentos a la siguiente.`;
       }
       return `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
     }
@@ -651,7 +669,7 @@
       window.open(generarLink('no'), '_blank');
     });
 
-    // Copiar número de cuenta (igual que antes)
+    // COPIAR NÚMERO
     const cardContainer = document.getElementById('cardNumberContainer');
     const accountNumberSpan = document.getElementById('accountNumber');
     const copyMessage = document.getElementById('copyMessage');
@@ -664,14 +682,14 @@
       });
     });
 
-    // Botón volver arriba
+    // BOTÓN VOLVER ARRIBA
     const goTop = document.getElementById('goTop');
     window.addEventListener('scroll', () => {
       goTop.classList.toggle('visible', window.scrollY > 500);
     });
     goTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    // Parallax
+    // PARALLAX
     gsap.registerPlugin(ScrollTrigger);
     gsap.to('.hero-bg', {
       y: '20%',
@@ -679,7 +697,7 @@
       scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
     });
 
-    // --- REPRODUCTOR DE MÚSICA (activado por botón, una sola canción) ---
+    // MÚSICA
     const startBtn = document.getElementById('startExperience');
     const primerSeccion = document.getElementById('primer-seccion');
     let audio = new Audio('Song.mp3');
